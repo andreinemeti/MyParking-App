@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MyParking.ViewModels.ParkingLotVM>
+
+<style type="text/css">
+    body {
+        padding-top: 100px;
+    }
+    .glyphicon {
+        font-size: 20px;
+    }
+</style>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary btn-sm" })
+    @Html.ActionLink(" ", "Index", "Home", null, new { @class = "glyphicon glyphicon-home btn btn-md" })
+</p>
+
+    <div>
+        <table class="table" id="parkinglotsTable">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ParkingName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Capacity)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Zone)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ParkingName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Capacity)
+                        </td>
+                        <td>
+
+                            <div class="form-group form-group-sm">
+
+                                <div class="col-md-10">
+                                    @Html.EnumDropDownListFor(modelItem => item.Zone, new { @class = "btn btn-success btn-xs dropdown-toggle" })
+                                    @Html.ValidationMessageFor(modelItem => item.Zone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                        </td>
+                        <td>
+
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ParkingID }, new { @class = "btn btn-success btn-xs" })
+                            @Html.ActionLink("Details", "Details", new { id = item.ParkingID }, new { @class = "btn btn-success btn-xs" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ParkingID }, new { @class = "btn btn-success btn-xs" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+<div id="map" style="width: 100%; height: 400px;"></div>
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyBymYCJMaaFTO_Lvk1IAECHC_A396YI-f4&callback=initMap"
+        type="text/javascript"></script>
+<script src="~/Scripts/map-locations.js"></script>
+
