@@ -1,0 +1,83 @@
+﻿@using System.Web.UI.WebControls
+@using MyParking
+@model IEnumerable<MyParking.ViewModels.CustomerVM>
+
+<style type="text/css">
+     body { padding-top: 100px; }
+    .glyphicon {font-size: 20px;}
+</style>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary btn-sm" })
+    @Html.ActionLink(" ", "Index", "Home", null, new { @class = "glyphicon glyphicon-home btn btn-md" })
+</p>
+
+
+
+@using (Html.BeginForm("DeleteSelected", "Customers", FormMethod.Post))
+{
+    <div>
+        <table class="display" id="customersTable">
+            <thead>
+                <tr>
+                    <th>
+                        Mark all &nbsp;<input type="checkbox" name="select-all" id="select-all" />
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Phone)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="ids" value="@item.CustomerID" />
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Phone)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID }, new { @class = "btn btn-success btn-xs" })
+                            @Html.ActionLink("Details", "Details", new { id = item.CustomerID }, new { @class = "btn btn-success btn-xs" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID }, new { @class = "btn btn-success btn-xs" })
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+
+
+    <input type="submit" class="btn btn-danger btn-sm" value="Delete selected" />
+}
+
+<link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+@section Scripts{
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/select-all.js"></script>
+    <script src="~/Scripts/add-data-table.js"></script>
+
+
+}
+

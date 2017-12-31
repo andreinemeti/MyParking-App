@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "NotFound";
+}
+
+<style type="text/css">
+    body {
+        padding-top: 100px;
+    }
+
+    .glyphicon {
+        font-size: 20px;
+    }
+</style>
+
+<h2>Warning, friendly 404! <span>@Html.ActionLink(" ", "Index", "Home", null, new { @class = "glyphicon glyphicon-home btn btn-md" })</span></h2>
+
+
+<div class="container">
+
+    <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal">
+        The page you are looking for cannot be found. Please check the URL requested!
+    </button>
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">404</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        A 404 error is an HTTP status code that means that the page you were trying
+                        to reach on a website couldn't be found on their server.
+                    </p>
+                    <p>
+                        404 Not Found error messages are frequently customized by individual websites. 
+                        You can see some of the more creative ones in our <a href="https://www.lifewire.com/best-404-error-pages-2625172">
+                        20 Best 404 Error Pages Ever</a> 
+                        slideshow. So, keep in mind that the 404 error might show up in just about any 
+                        way imaginable depending on what website it's shown from.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

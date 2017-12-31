@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "ReservationException";
+}
+
+<style type="text/css">
+    body {
+        padding-top: 100px;
+    }
+    .glyphicon {
+        font-size: 20px;
+    }
+</style>
+
+<h2>Warning!</h2>
+
+<div class="btn btn-warning btn-sm">
+    @TempData["Error"]
+</div>
+
+@Html.ActionLink(" ", "Index", "Home", null, new { @class = "glyphicon glyphicon-home btn btn-md" })

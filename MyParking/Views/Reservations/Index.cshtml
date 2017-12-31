@@ -1,0 +1,61 @@
+﻿@model IEnumerable<MyParking.ViewModels.ReservationVM>
+
+
+
+<style type="text/css">
+    body {
+        padding-top: 100px;
+    }
+    .glyphicon {
+        font-size: 20px;
+    }
+</style>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary btn-sm" })
+    @Html.ActionLink(" ", "Index", "Home", null, new { @class = "glyphicon glyphicon-home btn btn-md" })
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate) 
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParkingLot.ParkingName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParkingLot.ParkingName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ReservationID }, new { @class = "btn btn-success btn-xs" })
+                @Html.ActionLink("Details", "Details", new { id=item.ReservationID }, new { @class = "btn btn-success btn-xs" })
+                @Html.ActionLink("Delete", "Delete", new { id=item.ReservationID }, new { @class = "btn btn-success btn-xs" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
